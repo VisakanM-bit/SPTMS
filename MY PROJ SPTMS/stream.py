@@ -1,6 +1,6 @@
 import streamlit as st
 
-# Make Streamlit use the full width of the page
+# Make page full-width
 st.set_page_config(layout="wide")
 
 html_code = """
@@ -14,7 +14,7 @@ html_code = """
   body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: url("https://raw.githubusercontent.com/VisakanM-bit/SPTMS/refs/heads/main/MY%20PROJ%20SPTMS/image.png") no-repeat center center fixed;
+    background: url("https://raw.githubusercontent.com/VisakanM-bit/SPTMS/refs/heads/main/MY%20PROJ%20SPTMS/image.png");
     background-size: cover;
     color: rgb(243, 237, 237);
   }
@@ -22,7 +22,7 @@ html_code = """
     border: 2px solid #0f0101;
     padding: 20px;
     text-align: center;
-    display: inline-block;
+    width: fit-content;
     margin: 20px auto;
     border-radius: 8px;
     background-color: #03000a;
@@ -38,16 +38,16 @@ html_code = """
   }
   .split-section {
     display: flex;
-    max-width: 1200px; 
+    width: 100%; 
     margin: auto;
     padding: 20px;
     gap: 20px;
   }
   .left-side {
-    flex: 2;
+    width: 70%;
   }
   .right-side {
-    flex: 1;
+    width: 30%;
   }
   .left-side, .right-side {
     background-color: rgba(243, 236, 236, 0.1);
@@ -67,7 +67,8 @@ html_code = """
     background-color: rgba(0,0,0,0.3);
     padding: 20px;
     border-radius: 8px;
-    width: 100%;
+    max-width: 350px;
+    margin: auto;
   }
   .login-container input, 
   .login-container button {
@@ -86,38 +87,22 @@ html_code = """
   .login-container button:hover {
     background-color: #e68900;
   }
-  .logo {
-    max-width: 200px;
-    height: auto;
-    position: absolute;
-    top: 20px;
-  }
-  .logo.left {
-    left: 40px;
-  }
-  .logo.right {
-    right: 40px;
-  }
   @media (max-width: 768px) {
     .split-section {
       flex-direction: column;
     }
-    .logo {
-      position: static;
-      display: block;
-      margin: auto;
+    .left-side, .right-side {
+      width: 100%;
     }
   }
   </style>
 </head>
 <body>
-  <img src="https://raw.githubusercontent.com/VisakanM-bit/SPTMS/refs/heads/main/MY%20PROJ%20SPTMS/buslogo1.jpg" alt="Bus Logo" class="logo left">
-  <img src="https://raw.githubusercontent.com/VisakanM-bit/SPTMS/refs/heads/main/MY%20PROJ%20SPTMS/clglogo1.jpg" alt="College Logo" class="logo right">
+  <img src="https://raw.githubusercontent.com/VisakanM-bit/SPTMS/refs/heads/main/MY%20PROJ%20SPTMS/buslogo1.jpg" alt="Bus Logo" style="width: 250px; height: 130px; position:absolute; top:20px; left: 40px;">
+  <img src="https://raw.githubusercontent.com/VisakanM-bit/SPTMS/refs/heads/main/MY%20PROJ%20SPTMS/clglogo1.jpg" alt="College Logo" style="width: 250px; height: 130px; position:absolute; top:20px; right: 40px;">
 
-  <div style="text-align:center;">
-    <div class="heading-box">
-      <h1>Smart Public Transport Management System</h1>
-    </div>
+  <div class="heading-box">
+    <h1>Smart Public Transport Management System</h1>
   </div>
 
   <marquee class="scroll-message" behavior="scroll" direction="left">
@@ -154,4 +139,4 @@ html_code = """
 </html>
 """
 
-st.components.v1.html(html_code, height=1200, scrolling=True)
+st.components.v1.html(html_code, height=1000, scrolling=True)
