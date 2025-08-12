@@ -1,18 +1,19 @@
 import streamlit as st
 
-# Force Streamlit page to go full width
 st.set_page_config(layout="wide")
 
-# Remove default Streamlit padding and center lock
+# Remove Streamlit padding & make iframe full size
 st.markdown("""
     <style>
         .block-container {
             padding: 0 !important;
-            margin: 0 !important;
-            max-width: 100% !important;
+            margin: 0 auto;
+            max-width: 100%;
         }
         iframe {
             width: 100% !important;
+            height: 100vh !important;
+            border: none;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -28,22 +29,23 @@ html_code = """
     html, body {
       margin: 0;
       padding: 0;
-      width: 100%;
       height: 100%;
+      width: 100%;
       font-family: Arial, sans-serif;
       background: url("https://raw.githubusercontent.com/VisakanM-bit/SPTMS/refs/heads/main/MY%20PROJ%20SPTMS/image.png") no-repeat center center fixed;
       background-size: cover;
       color: rgb(243, 237, 237);
+      box-sizing: border-box;
     }
     .heading-box {
       border: 2px solid #0f0101;
       padding: 20px;
       text-align: center;
+      display: inline-block;
       border-radius: 8px;
       background-color: #03000a;
-      display: inline-block;
-      margin: 160px auto 20px;
       box-shadow: 0 0 10px rgba(243, 242, 242, 0.1);
+      margin-top: 160px;
     }
     .scroll-message {
       background-color: #333;
@@ -66,6 +68,10 @@ html_code = """
       background-color: rgba(243, 236, 236, 0.1);
       border-radius: 8px;
       padding: 20px;
+      min-height: 300px;
+    }
+    .left-side h2 {
+      color: #ece3e3;
     }
     .login-container form {
       display: flex;
@@ -74,6 +80,7 @@ html_code = """
       background-color: rgba(0,0,0,0.3);
       padding: 20px;
       border-radius: 8px;
+      width: 100%;
       max-width: 350px;
       margin: auto;
     }
@@ -82,6 +89,7 @@ html_code = """
       padding: 10px;
       border: none;
       border-radius: 4px;
+      font-size: 1rem;
     }
     .login-container button {
       background-color: #ff9800;
@@ -92,8 +100,9 @@ html_code = """
       background-color: #e68900;
     }
     img.logo {
-      max-width: 250px;
       width: 20vw;
+      max-width: 250px;
+      height: auto;
       position: absolute;
       top: 20px;
     }
@@ -101,7 +110,11 @@ html_code = """
     .logo.right { right: 40px; }
     @media (max-width: 768px) {
       img.logo {
+        width: 35vw;
         max-width: 150px;
+      }
+      .heading-box {
+        margin-top: 120px;
       }
     }
   </style>
@@ -110,7 +123,7 @@ html_code = """
   <img src="https://raw.githubusercontent.com/VisakanM-bit/SPTMS/refs/heads/main/MY%20PROJ%20SPTMS/buslogo1.jpg" class="logo left">
   <img src="https://raw.githubusercontent.com/VisakanM-bit/SPTMS/refs/heads/main/MY%20PROJ%20SPTMS/clglogo1.jpg" class="logo right">
 
-  <div style="text-align:center;">
+  <div style="text-align: center;">
     <div class="heading-box">
       <h1>Smart Public Transport Management System</h1>
     </div>
@@ -122,10 +135,10 @@ html_code = """
 
   <div class="split-section">
     <div class="left-side">
-      <p style="font-weight:bold;font-size:2rem;line-height:1.4;">
+      <p style="font-weight: bold; font-size: 2rem; line-height: 1.4;">
         FROM STOP TO DESTINATION<br> WE HAVE GOT YOU COVERED
       </p>
-      <p style="font-weight:bold;font-size:1rem;line-height:1.4;">
+      <p style="font-weight: bold; font-size: 1rem; line-height: 1.4;">
         AI-powered system for real-time bus tracking, crowd prediction, and safety monitoring.
         Ensuring smoother, safer, and smarter journeys for everyone.
       </p>
