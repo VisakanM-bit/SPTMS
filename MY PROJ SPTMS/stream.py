@@ -1,9 +1,24 @@
 import streamlit as st
 
-# Set Streamlit page to wide layout
+# Set page layout to wide
 st.set_page_config(layout="wide")
 
-# Full-screen HTML
+# Force iframe & app container to fill the full page
+st.markdown(
+    """
+    <style>
+    .stApp {
+        margin: 0;
+        padding: 0;
+    }
+    iframe {
+        width: 100% !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 html_code = """
 <!DOCTYPE html>
 <html lang="en">
@@ -12,17 +27,12 @@ html_code = """
   <title>Home - SPTMS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-  }
   body {
+    margin: 0;
     font-family: Arial, sans-serif;
-    background: url("https://raw.githubusercontent.com/VisakanM-bit/SPTMS/refs/heads/main/MY%20PROJ%20SPTMS/image.png") no-repeat center center fixed;
+    background: url("https://raw.githubusercontent.com/VisakanM-bit/SPTMS/refs/heads/main/MY%20PROJ%20SPTMS/image.png");
     background-size: cover;
+    background-position: center;
     color: rgb(243, 237, 237);
   }
   .heading-box {
@@ -45,16 +55,16 @@ html_code = """
   }
   .split-section {
     display: flex;
-    width: 100%;
+    width: 100%; 
+    margin: auto;
     padding: 20px;
     gap: 20px;
-    box-sizing: border-box;
   }
   .left-side {
-    flex: 70%;
+    flex: 3;
   }
   .right-side {
-    flex: 30%;
+    flex: 1;
   }
   .left-side, .right-side {
     background-color: rgba(243, 236, 236, 0.1);
@@ -63,6 +73,9 @@ html_code = """
   }
   .left-side h2 {
     color: #ece3e3;
+  }
+  ul {
+    padding-left: 20px;
   }
   .login-container form {
     display: flex;
@@ -140,5 +153,5 @@ html_code = """
 </html>
 """
 
-# Set iframe to take 100% width
+# Render HTML fullscreen
 st.components.v1.html(html_code, height=1000, scrolling=True)
