@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(layout="wide")
 
-# Remove Streamlit padding and force full width
+# Remove Streamlit padding & make iframe full size
 st.markdown("""
     <style>
         .block-container {
@@ -13,6 +13,7 @@ st.markdown("""
         iframe {
             width: 100% !important;
             height: 100vh !important;
+            border: none;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -34,23 +35,25 @@ html_code = """
       background: url("https://raw.githubusercontent.com/VisakanM-bit/SPTMS/refs/heads/main/MY%20PROJ%20SPTMS/image.png") no-repeat center center fixed;
       background-size: cover;
       color: rgb(243, 237, 237);
+      box-sizing: border-box;
     }
     .heading-box {
       border: 2px solid #0f0101;
       padding: 20px;
       text-align: center;
-      width: fit-content;
-      margin: 20px auto;
+      display: inline-block;
       border-radius: 8px;
       background-color: #03000a;
       box-shadow: 0 0 10px rgba(243, 242, 242, 0.1);
+      margin-top: 160px;
     }
     .scroll-message {
       background-color: #333;
       color: white;
-      padding: 5px;
-      font-size: 20px;
+      padding: 8px;
+      font-size: 1.2rem;
       font-weight: bold;
+      width: 100%;
     }
     .split-section {
       display: flex;
@@ -61,10 +64,11 @@ html_code = """
       box-sizing: border-box;
     }
     .left-side, .right-side {
-      flex: 1;
+      flex: 1 1 300px;
       background-color: rgba(243, 236, 236, 0.1);
       border-radius: 8px;
       padding: 20px;
+      min-height: 300px;
     }
     .left-side h2 {
       color: #ece3e3;
@@ -76,6 +80,7 @@ html_code = """
       background-color: rgba(0,0,0,0.3);
       padding: 20px;
       border-radius: 8px;
+      width: 100%;
       max-width: 350px;
       margin: auto;
     }
@@ -84,24 +89,44 @@ html_code = """
       padding: 10px;
       border: none;
       border-radius: 4px;
+      font-size: 1rem;
     }
     .login-container button {
       background-color: #ff9800;
       color: white;
-      font-size: 16px;
       cursor: pointer;
     }
     .login-container button:hover {
       background-color: #e68900;
     }
+    img.logo {
+      width: 20vw;
+      max-width: 250px;
+      height: auto;
+      position: absolute;
+      top: 20px;
+    }
+    .logo.left { left: 40px; }
+    .logo.right { right: 40px; }
+    @media (max-width: 768px) {
+      img.logo {
+        width: 35vw;
+        max-width: 150px;
+      }
+      .heading-box {
+        margin-top: 120px;
+      }
+    }
   </style>
 </head>
 <body>
-  <img src="https://raw.githubusercontent.com/VisakanM-bit/SPTMS/refs/heads/main/MY%20PROJ%20SPTMS/buslogo1.jpg" style="width: 250px; height: 130px; position:absolute; top:20px; left: 40px;">
-  <img src="https://raw.githubusercontent.com/VisakanM-bit/SPTMS/refs/heads/main/MY%20PROJ%20SPTMS/clglogo1.jpg" style="width: 250px; height: 130px; position:absolute; top:20px; right: 40px;">
+  <img src="https://raw.githubusercontent.com/VisakanM-bit/SPTMS/refs/heads/main/MY%20PROJ%20SPTMS/buslogo1.jpg" class="logo left">
+  <img src="https://raw.githubusercontent.com/VisakanM-bit/SPTMS/refs/heads/main/MY%20PROJ%20SPTMS/clglogo1.jpg" class="logo right">
 
-  <div class="heading-box">
-    <h1>Smart Public Transport Management System</h1>
+  <div style="text-align: center;">
+    <div class="heading-box">
+      <h1>Smart Public Transport Management System</h1>
+    </div>
   </div>
 
   <marquee class="scroll-message">
@@ -110,8 +135,10 @@ html_code = """
 
   <div class="split-section">
     <div class="left-side">
-      <p style="font-weight: bold; font-size: 40px;">FROM STOP TO DESTINATION<br> WE HAVE GOT YOU COVERED</p>
-      <p style="font-weight: bold; font-size: 16px;">
+      <p style="font-weight: bold; font-size: 2rem; line-height: 1.4;">
+        FROM STOP TO DESTINATION<br> WE HAVE GOT YOU COVERED
+      </p>
+      <p style="font-weight: bold; font-size: 1rem; line-height: 1.4;">
         AI-powered system for real-time bus tracking, crowd prediction, and safety monitoring.
         Ensuring smoother, safer, and smarter journeys for everyone.
       </p>
