@@ -7,7 +7,7 @@ html_code = """
 <head>
   <meta charset="UTF-8">
   <title>Home - SPTMS</title>
-  <meta name="viewport" content="width=1300", initial-scale=1.0">
+  <meta name="viewport" content="width=5000", initial-scale=1.0">
   <style>
   body {
     margin: 0;
@@ -137,6 +137,7 @@ html_code = """
 
 
 st.components.v1.html(html_code, height=900, scrolling=True)
+
 
 
 
