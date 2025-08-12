@@ -113,56 +113,22 @@
     </div>
   </div>
 
-  <!-- Firebase Scripts -->
-  <script type="module">
-    // Firebase imports
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getAuth, sendSignInLinkToEmail, isSignInWithEmailLink, signInWithEmailLink } 
-      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  <script>
+document.getElementById('emailLoginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCqojVeQBfSqI9ylS4JbUfw-1RkDUfNzvg",
-      authDomain: "sptms2025-54f4a.firebaseapp.com",
-      projectId: "sptms2025-54f4a",
-      storageBucket: "sptms2025-54f4a.firebasestorage.app",
-      messagingSenderId: "125547421465",
-      appId: "1:125547421465:web:4455c29c7184db27106f88",
-      measurementId: "G-LL8JKQ5514"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth();
-
-    document.getElementById("emailLoginForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const email = document.getElementById("email").value;
-      const actionCodeSettings = {
-        url: window.location.href, // redirect back to same page
-        handleCodeInApp: true,
-      };
-      try {
-        await sendSignInLinkToEmail(auth, email, actionCodeSettings);
-        window.localStorage.setItem('emailForSignIn', email);
-        document.getElementById("status").textContent = "Login link sent! Check your email.";
-      } catch (error) {
-        document.getElementById("status").textContent = error.message;
-      }
+    const res = await fetch('http://localhost:5000/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
     });
 
-    if (isSignInWithEmailLink(auth, window.location.href)) {
-      let email = window.localStorage.getItem('emailForSignIn');
-      if (!email) {
-        email = window.prompt('Please provide your email for confirmation');
-      }
-      signInWithEmailLink(auth, email, window.location.href)
-        .then(() => {
-          document.getElementById("status").textContent = "You are logged in!";
-          window.localStorage.removeItem('emailForSignIn');
-        })
-        .catch(error => {
-          document.getElementById("status").textContent = error.message;
-        });
-    }
-  </script>
+    const data = await res.json();
+    document.getElementById('status').innerText = data.message;
+});
+</script>
+
+  
 </body>
 </html>
