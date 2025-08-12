@@ -1,24 +1,24 @@
 import streamlit as st
 
-# Set page layout to wide
+# Make Streamlit page use full width
 st.set_page_config(layout="wide")
 
-# Force iframe & app container to fill the full page
+# Override default Streamlit styles to make iframe take up full width/height
 st.markdown(
     """
     <style>
-    .stApp {
-        margin: 0;
-        padding: 0;
+    .block-container {
+        padding: 0rem 0rem;
+        max-width: 100%;
     }
     iframe {
         width: 100% !important;
+        height: 100vh !important;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
-
 html_code = """
 <!DOCTYPE html>
 <html lang="en">
@@ -154,4 +154,5 @@ html_code = """
 """
 
 # Render HTML fullscreen
-st.components.v1.html(html_code, height=1000, scrolling=True)
+st.components.v1.html(html_code, height=900, scrolling=True)
+
