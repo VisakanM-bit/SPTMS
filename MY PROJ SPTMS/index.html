@@ -115,7 +115,6 @@
 
   <!-- Firebase Scripts -->
   <script type="module">
-    // Firebase imports
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
     import { getAuth, sendSignInLinkToEmail, isSignInWithEmailLink, signInWithEmailLink } 
       from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
@@ -137,13 +136,13 @@
       e.preventDefault();
       const email = document.getElementById("email").value;
       const actionCodeSettings = {
-        url: window.location.href, // redirect back to same page
+        url: "https://login.sptms.com/__/auth/action", // ✅ Custom domain
         handleCodeInApp: true,
       };
       try {
         await sendSignInLinkToEmail(auth, email, actionCodeSettings);
         window.localStorage.setItem('emailForSignIn', email);
-        document.getElementById("status").textContent = "Login link sent! Check your email.";
+        document.getElementById("status").textContent = "Login link sent! Check your inbox.";
       } catch (error) {
         document.getElementById("status").textContent = error.message;
       }
@@ -163,11 +162,6 @@
           document.getElementById("status").textContent = error.message;
         });
     }
-  const actionCodeSettings = {
-  url: "https://login.sptms.com/__/auth/action",
-  handleCodeInApp: true,
-};
-
   </script>
 </body>
 </html>
