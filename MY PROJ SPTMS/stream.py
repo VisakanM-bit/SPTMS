@@ -112,7 +112,7 @@ html_code = """
   <div class="split-section">
     <div class="left-side">
       <p style="font-weight: bold; font-size: 40px; line-height: 1.4;">
-        FROM TOP TO DESTINATION<br> WE HAVE GOT YOU COVERED
+        FROM STOP TO DESTINATION<br> WE HAVE GOT YOU COVERED
       </p>
       <p style="font-weight: bold; font-size: 16px; line-height: 1.4; margin-top: 0;">
         AI-powered system for real-time bus tracking, crowd prediction, and safety monitoring.
@@ -140,4 +140,5 @@ html_code = """
 """
 
 st.components.v1.html(html_code, height=1000, scrolling=True)
+
 
