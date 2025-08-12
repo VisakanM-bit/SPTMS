@@ -1,8 +1,9 @@
 import streamlit as st
 
-# Make page full-width
+# Set Streamlit page to wide layout
 st.set_page_config(layout="wide")
 
+# Full-screen HTML
 html_code = """
 <!DOCTYPE html>
 <html lang="en">
@@ -11,10 +12,16 @@ html_code = """
   <title>Home - SPTMS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-  body {
+  html, body {
     margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+  }
+  body {
     font-family: Arial, sans-serif;
-    background: url("https://raw.githubusercontent.com/VisakanM-bit/SPTMS/refs/heads/main/MY%20PROJ%20SPTMS/image.png");
+    background: url("https://raw.githubusercontent.com/VisakanM-bit/SPTMS/refs/heads/main/MY%20PROJ%20SPTMS/image.png") no-repeat center center fixed;
     background-size: cover;
     color: rgb(243, 237, 237);
   }
@@ -38,16 +45,16 @@ html_code = """
   }
   .split-section {
     display: flex;
-    width: 100%; 
-    margin: auto;
+    width: 100%;
     padding: 20px;
     gap: 20px;
+    box-sizing: border-box;
   }
   .left-side {
-    width: 70%;
+    flex: 70%;
   }
   .right-side {
-    width: 30%;
+    flex: 30%;
   }
   .left-side, .right-side {
     background-color: rgba(243, 236, 236, 0.1);
@@ -56,9 +63,6 @@ html_code = """
   }
   .left-side h2 {
     color: #ece3e3;
-  }
-  ul {
-    padding-left: 20px;
   }
   .login-container form {
     display: flex;
@@ -90,9 +94,6 @@ html_code = """
   @media (max-width: 768px) {
     .split-section {
       flex-direction: column;
-    }
-    .left-side, .right-side {
-      width: 100%;
     }
   }
   </style>
@@ -139,6 +140,5 @@ html_code = """
 </html>
 """
 
+# Set iframe to take 100% width
 st.components.v1.html(html_code, height=1000, scrolling=True)
-
-
